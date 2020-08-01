@@ -20,3 +20,15 @@ after_sucess:
     - docker push shivambehal/multi-nginx
     - docker push shivambehal/multi-server
     - docker push shivambehal/multi-worker
+
+deploy:
+    provider: elasticbeanstalk
+    region: ap-south-1
+    app: multi-docker
+    env: MultiDocker-env
+    bucket_name: elasticbeanstalk-ap-south-1-318854857817
+    bucket_path: docker-multi
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
